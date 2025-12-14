@@ -165,6 +165,50 @@
         <quarkus.native.enabled>true</quarkus.native.enabled>
       </properties>
     </profile>
+
+    <profile>
+      <id>docker</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.47.0</version>
+            <executions>
+              <execution>
+                <id>docker-build</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>docker-push</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>push</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <verbose>true</verbose>
+              <images>
+                <image>
+                  <name>philip/${project.artifactId}:${project.version}</name>
+                  <build>
+                    <dockerFile>Dockerfile</dockerFile>
+                    <assembly>
+                      <descriptor>${project.basedir}/src/assembly/dist.xml</descriptor>
+                    </assembly>
+                  </build>
+                </image>
+              </images>
+              <pushRegistry>code.phoswald.ch</pushRegistry> <!-- credentials from ~/.m2/settings.xml -->
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
   <repositories>

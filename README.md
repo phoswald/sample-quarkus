@@ -7,7 +7,7 @@ Experiments with Quarkus, featuring:
 - REST endpoints using JAX-RS 
 - Postgres database using JPA and Hibernate
 
-## Build and Run Standalone
+## Run Standalone
 
 ~~~
 $ mvn clean verify
@@ -19,21 +19,10 @@ $ java \
   -jar target/quarkus-app/quarkus-run.jar
 ~~~
 
-### Dev Mode
+## Run with Docker
 
 ~~~
-$ mvn quarkus:dev \
-  -Dquarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/mydb \
-  -Dquarkus.datasource.username=myuser \
-  -Dquarkus.datasource.password=mypassword \
-  -Dquarkus.hibernate-orm.database.generation=update
-~~~
-
-## Build and Run in Docker
-
-~~~
-$ mvn clean verify
-$ docker build -f src/main/docker/Dockerfile -t philip/sample-quarkus:0.1.0-SNAPSHOT .
+$ mvn clean verify -P docker
 $ docker run -it --name sample-quarkus --rm \
   -p 8080:8080 \
   -e QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://surin.home:5432/mydb \
@@ -43,9 +32,19 @@ $ docker run -it --name sample-quarkus --rm \
   philip/sample-quarkus:0.1.0-SNAPSHOT
 ~~~
 
+### Run with Dev Mode
+
+~~~
+$ mvn quarkus:dev \
+  -Dquarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/mydb \
+  -Dquarkus.datasource.username=myuser \
+  -Dquarkus.datasource.password=mypassword \
+  -Dquarkus.hibernate-orm.database.generation=update
+~~~
+
 Note: JVM System Properties can be passed as normal command line arguments (using `-D...=...` syntax).
 
-## Build and Run Natively
+## Run Natively
 
 ~~~
 $ mvn clean verify -P native

@@ -14,9 +14,4 @@ jobs:
           restore-keys: |
             maven-
       - run: mkdir -p ~/.m2 &&  echo "${{ secrets.M2_SETTINGS }}" > ~/.m2/settings.xml
-      - run: JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ mvn -B clean deploy
-      - run: docker build -f src/main/docker/Dockerfile -t philip/sample-quarkus:latest .
-      - run: docker login "${{ vars.DOCKER_REGISTRY }}" -u "${{ vars.DOCKER_USER }}" -p "${{ secrets.DOCKER_TOKEN }}"
-      - run: docker tag philip/sample-quarkus:latest "${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_USER }}/sample-quarkus:latest"
-      - run: docker push "${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_USER }}/sample-quarkus:latest"
-      - run: docker logout "${{ vars.DOCKER_REGISTRY }}"
+      - run: JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ mvn -B clean deploy -P docker

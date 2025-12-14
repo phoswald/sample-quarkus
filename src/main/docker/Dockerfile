@@ -1,7 +1,15 @@
 FROM code.phoswald.ch/philip/jre-21:latest
 
+ENV TZ                  Europe/Zurich
+ENV LANG                de_CH.UTF-8
+ENV LC_ALL              de_CH.UTF-8
+#   JAVA_HOME           /usr/lib/jvm/default-jvm
+#   JRE_CACERTS_PATH    ${JAVA_HOME}/lib/security/cacerts
+ENV JAVA_TOOL_OPTIONS   -XX:MaxRAMPercentage=50
+ENV APP_SAMPLE_CONFIG   ValueFromDockerfile
+
 WORKDIR /usr/local/application
-COPY target/quarkus-app /usr/local/application
+COPY maven .
 CMD ["java", "-jar", "quarkus-run.jar"]
 
 USER daemon:daemon
