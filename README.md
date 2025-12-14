@@ -33,14 +33,14 @@ $ mvn quarkus:dev \
 
 ~~~
 $ mvn clean verify
-$ docker build -f src/main/docker/Dockerfile -t sample-quarkus:0.1.0-SNAPSHOT .
-$ docker run -it --rm --name sample-quarkus \
+$ docker build -f src/main/docker/Dockerfile -t philip/sample-quarkus:0.1.0-SNAPSHOT .
+$ docker run -it --name sample-quarkus --rm \
   -p 8080:8080 \
   -e QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://surin.home:5432/mydb \
   -e QUARKUS_DATASOURCE_USERNAME=myuser \
   -e QUARKUS_DATASOURCE_PASSWORD=mypassword \
   -e APP_SAMPLE_CONFIG=ValueFromDockerRun \
-  sample-quarkus:0.1.0-SNAPSHOT
+  philip/sample-quarkus:0.1.0-SNAPSHOT
 ~~~
 
 Note: JVM System Properties can be passed as normal command line arguments (using `-D...=...` syntax).

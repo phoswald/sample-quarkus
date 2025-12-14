@@ -1,9 +1,8 @@
-FROM eclipse-temurin:21-jre-alpine
+FROM code.phoswald.ch/philip/jre-21:latest
 
-COPY --chown=daemon:daemon target/quarkus-app /usr/local/application
+WORKDIR /usr/local/application
+COPY target/quarkus-app /usr/local/application
+CMD ["java", "-jar", "quarkus-run.jar"]
 
 USER daemon:daemon
 EXPOSE 8080
-
-WORKDIR /usr/local/application
-CMD ["java", "-jar", "quarkus-run.jar"]

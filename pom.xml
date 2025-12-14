@@ -167,4 +167,22 @@
     </profile>
   </profiles>
 
+  <repositories>
+    <repository>
+      <id>code.phoswald.ch</id>
+      <url>https://code.phoswald.ch/api/packages/philip/maven</url>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>code.phoswald.ch</id>
+      <url>https://code.phoswald.ch/api/packages/philip/maven</url>
+    </repository>
+    <snapshotRepository>
+      <id>code.phoswald.ch</id>
+      <url>https://code.phoswald.ch/api/packages/philip/maven</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
