@@ -19,6 +19,8 @@ $ java \
   -jar target/quarkus-app/quarkus-run.jar
 ~~~
 
+There is no main class to run from the IDE. Use Dev Mode with Maven instead!
+
 ## Run with Docker
 
 ~~~
