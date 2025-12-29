@@ -1,5 +1,11 @@
-/target/
-/.settings/
-/.classpath
-/.project
+target/
 /databases
+
+.project
+.classpath
+.factorypath
+.settings/
+
+.idea/
+
+.vscode/
