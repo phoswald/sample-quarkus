@@ -169,7 +169,6 @@ class ApplicationTest {
             body("status", equalTo("UP"));
     }
 
-    @Disabled // TODO (feature): support Metrics
     @Test
     void getMetrics() {
         when().
