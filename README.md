@@ -14,6 +14,7 @@ $ mvn clean verify
 $ export APP_SAMPLE_CONFIG=ValueFromShell
 $ java \
   -Dquarkus.http.port=8081 \
+  -Dquarkus.http.auth.session.encryption-key=mysecretforsession \
   -Dquarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/mydb \
   -Dquarkus.datasource.username=myuser \
   -Dquarkus.datasource.password=mypassword \
@@ -28,6 +29,7 @@ There is no main class to run from the IDE. Use Dev Mode with Maven instead!
 $ mvn clean verify -P docker
 $ docker run -it --name sample-quarkus --rm \
   -p 8081:8080 \
+  -e QUARKUS_HTTP_AUTH_SESSION_ENCRYPTION_KEY=mysecretforsession \
   -e QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://surin.home:5432/mydb \
   -e QUARKUS_DATASOURCE_USERNAME=myuser \
   -e QUARKUS_DATASOURCE_PASSWORD=mypassword \
@@ -40,6 +42,7 @@ $ docker run -it --name sample-quarkus --rm \
 ~~~
 $ mvn quarkus:dev \
   -Dquarkus.http.port=8081 \
+  -Dquarkus.http.auth.session.encryption-key=mysecretforsession \
   -Dquarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/mydb \
   -Dquarkus.datasource.username=myuser \
   -Dquarkus.datasource.password=mypassword \
@@ -54,6 +57,7 @@ Note: JVM System Properties can be passed as normal command line arguments (usin
 $ mvn clean verify -P native
 $ target/sample-quarkus-0.1.0-SNAPSHOT-runner \
   -Dquarkus.http.port=8081 \
+  -Dquarkus.http.auth.session.encryption-key=mysecretforsession \
   -Dquarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/mydb \
   -Dquarkus.datasource.username=myuser \
   -Dquarkus.datasource.password=mypassword

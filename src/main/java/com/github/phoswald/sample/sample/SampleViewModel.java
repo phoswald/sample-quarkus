@@ -27,6 +27,7 @@ public class SampleViewModel {
 
     private static boolean isSecret(Map.Entry<?, ?> e) {
         String key = e.getKey().toString().toLowerCase();
-        return key.contains("password") || key.contains("secret");
+        return key.contains("password") || key.contains("secret") ||
+                key.contains("encryption-key") || key.contains("encryption_key");
     }
 }
