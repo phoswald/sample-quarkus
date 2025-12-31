@@ -13,6 +13,7 @@ Experiments with Quarkus, featuring:
 $ mvn clean verify
 $ export APP_SAMPLE_CONFIG=ValueFromShell
 $ java \
+  -Dquarkus.http.port=8081 \
   -Dquarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/mydb \
   -Dquarkus.datasource.username=myuser \
   -Dquarkus.datasource.password=mypassword \
@@ -26,7 +27,7 @@ There is no main class to run from the IDE. Use Dev Mode with Maven instead!
 ~~~
 $ mvn clean verify -P docker
 $ docker run -it --name sample-quarkus --rm \
-  -p 8080:8080 \
+  -p 8081:8080 \
   -e QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://surin.home:5432/mydb \
   -e QUARKUS_DATASOURCE_USERNAME=myuser \
   -e QUARKUS_DATASOURCE_PASSWORD=mypassword \
@@ -38,6 +39,7 @@ $ docker run -it --name sample-quarkus --rm \
 
 ~~~
 $ mvn quarkus:dev \
+  -Dquarkus.http.port=8081 \
   -Dquarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/mydb \
   -Dquarkus.datasource.username=myuser \
   -Dquarkus.datasource.password=mypassword \
@@ -51,6 +53,7 @@ Note: JVM System Properties can be passed as normal command line arguments (usin
 ~~~
 $ mvn clean verify -P native
 $ target/sample-quarkus-0.1.0-SNAPSHOT-runner \
+  -Dquarkus.http.port=8081 \
   -Dquarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/mydb \
   -Dquarkus.datasource.username=myuser \
   -Dquarkus.datasource.password=mypassword
@@ -73,26 +76,28 @@ $ ldd target/sample-quarkus-0.1.0-SNAPSHOT-runner
 
 ## URLs
 
-- http://localhost:8080/
+- http://localhost:8081/
+- http://localhost:8081/q/dev-ui
+- http://localhost:8081/q/dev-ui/endpoints (leider fehlt der Prefix `/app` aus @ApplicationPath)
 
 ~~~
-$ curl 'http://localhost:8080/app/rest/sample/time' -i
-$ curl 'http://localhost:8080/app/rest/sample/config' -i
-$ curl 'http://localhost:8080/app/rest/sample/echo-xml' -i -X POST \
+$ curl 'http://localhost:8081/app/rest/sample/time' -i
+$ curl 'http://localhost:8081/app/rest/sample/config' -i
+$ curl 'http://localhost:8081/app/rest/sample/echo-xml' -i -X POST \
   -H 'content-type: text/xml' \
   -d '<EchoRequest><input>This is CURL</input></EchoRequest>'
-$ curl 'http://localhost:8080/app/rest/sample/echo-json' -i -X POST \
+$ curl 'http://localhost:8081/app/rest/sample/echo-json' -i -X POST \
   -H 'content-type: application/json' \
   -d '{"input":"This is CURL"}'
-$ curl 'http://localhost:8080/app/rest/tasks' -i
-$ curl 'http://localhost:8080/app/rest/tasks' -i -X POST \
+$ curl 'http://localhost:8081/app/rest/tasks' -i
+$ curl 'http://localhost:8081/app/rest/tasks' -i -X POST \
   -H 'content-type: application/json' \
   -d '{"title":"Some task","description":"This is CURL","done":true}'
-$ curl 'http://localhost:8080/app/rest/tasks/5b89f266-c566-4d1f-8545-451bc443cf26' -i
-$ curl 'http://localhost:8080/app/rest/tasks/5b89f266-c566-4d1f-8545-451bc443cf26' -i -X PUT \
+$ curl 'http://localhost:8081/app/rest/tasks/5b89f266-c566-4d1f-8545-451bc443cf26' -i
+$ curl 'http://localhost:8081/app/rest/tasks/5b89f266-c566-4d1f-8545-451bc443cf26' -i -X PUT \
   -H 'content-type: application/json' \
   -d '{"title":"Some updated task","description":"This is still CURL","done":false}'
-$ curl 'http://localhost:8080/app/rest/tasks/5b89f266-c566-4d1f-8545-451bc443cf26' -i -X DELETE
+$ curl 'http://localhost:8081/app/rest/tasks/5b89f266-c566-4d1f-8545-451bc443cf26' -i -X DELETE
 ~~~
 
 ## Security
