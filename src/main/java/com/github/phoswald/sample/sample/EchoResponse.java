@@ -5,13 +5,13 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "EchoResponse")
 public class EchoResponse {
 
-    private String ouput;
+    private String output;
 
-    public String getOuput() {
-        return ouput;
+    public String getOutput() {
+        return output;
     }
 
-    public void setOuput(String ouput) {
-        this.ouput = ouput;
+    public void setOutput(String output) {
+        this.output = output;
     }
 }

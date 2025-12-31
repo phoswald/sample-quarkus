@@ -44,7 +44,7 @@ public class SampleResource {
     @Produces(MediaType.TEXT_XML)
     public Response postEchoXml(EchoRequest request) {
         EchoResponse response = new EchoResponse();
-        response.setOuput("Received " + request.getInput());
+        response.setOutput("Received " + request.getInput());
         return Response.ok(response).build();
     }
 
@@ -54,7 +54,7 @@ public class SampleResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response postEchoJson(EchoRequest request) {
         EchoResponse response = new EchoResponse();
-        response.setOuput("Received " + request.getInput());
+        response.setOutput("Received " + request.getInput());
         return Response.ok(response).build();
     }
 }
