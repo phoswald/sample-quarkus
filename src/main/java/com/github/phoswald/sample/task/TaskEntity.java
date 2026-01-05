@@ -1,7 +1,6 @@
 package com.github.phoswald.sample.task;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -10,8 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "task_")
@@ -29,8 +26,7 @@ public class TaskEntity {
     private String userId;
 
     @Column(name = "timestamp_")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date timestamp;
+    private Instant timestamp;
 
     @Column(name = "title_")
     private String title;
@@ -58,11 +54,11 @@ public class TaskEntity {
     }
 
     public Instant getTimestamp() {
-        return timestamp == null ? null : timestamp.toInstant();
+        return timestamp;
     }
 
     public void setTimestamp(Instant timestamp) {
-        this.timestamp = timestamp == null ? null : Date.from(timestamp);
+        this.timestamp = timestamp;
     }
 
     public String getTitle() {

@@ -37,7 +37,7 @@ $ docker run -it --name sample-quarkus --rm \
   philip/sample-quarkus:0.1.0-SNAPSHOT
 ~~~
 
-### Run with Dev Mode
+## Run with Dev Mode
 
 ~~~
 $ mvn quarkus:dev \
