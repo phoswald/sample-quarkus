@@ -106,7 +106,7 @@ $ curl 'http://localhost:8081/app/rest/tasks/5b89f266-c566-4d1f-8545-451bc443cf2
 
 ## Security
 
-See [SQL DDL](src/main/resources/schema.postgresql.sql) for Postgres.
+See SQL DDL for [Postgres](src/main/resources/schema.postgresql.sql).
 
 Create passwords for form-based authentication (table `user_`):
 
