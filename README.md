@@ -88,8 +88,8 @@ $ ldd target/sample-quarkus-0.1.0-SNAPSHOT-runner
 $ curl 'http://localhost:8081/app/rest/sample/time' -i
 $ curl 'http://localhost:8081/app/rest/sample/config' -i
 $ curl 'http://localhost:8081/app/rest/sample/echo-xml' -i -X POST \
-  -H 'content-type: text/xml' \
-  -d '<EchoRequest><input>This is CURL</input></EchoRequest>'
+  -H 'content-type: application/xml' \
+  -d '<echoRequest><input>This is CURL</input></echoRequest>'
 $ curl 'http://localhost:8081/app/rest/sample/echo-json' -i -X POST \
   -H 'content-type: application/json' \
   -d '{"input":"This is CURL"}'

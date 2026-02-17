@@ -43,8 +43,8 @@ public class SampleResource {
 
     @POST
     @Path("/echo-xml")
-    @Consumes(MediaType.TEXT_XML)
-    @Produces(MediaType.TEXT_XML)
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
     @Counted("application.SampleResource.postEchoXml")
     public Response postEchoXml(EchoRequest request) {
         EchoResponse response = new EchoResponse();

@@ -2,7 +2,7 @@ package com.github.phoswald.sample.sample;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "EchoResponse")
+@XmlRootElement(name = "echoResponse")
 public class EchoResponse {
 
     private String output;
