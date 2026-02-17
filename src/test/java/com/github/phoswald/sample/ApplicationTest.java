@@ -181,6 +181,6 @@ class ApplicationTest {
                 .get("/q/metrics")
                 .then()
                 .statusCode(200)
-                .contentType("text/plain");
+                .contentType("application/openmetrics-text");
     }
 }

@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.metrics.annotation.Counted;
+import io.micrometer.core.annotation.Counted;
 
 @RequestScoped
 @Path("/rest/sample")
@@ -27,7 +27,7 @@ public class SampleResource {
     @GET
     @Path("/time")
     @Produces(MediaType.TEXT_PLAIN)
-    @Counted
+    @Counted("application.SampleResource.getTime")
     public Response getTime() {
         String now = ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
         return Response.ok(now + "\n").build();
@@ -36,7 +36,7 @@ public class SampleResource {
     @GET
     @Path("/config")
     @Produces(MediaType.TEXT_PLAIN)
-    @Counted
+    @Counted("application.SampleResource.getConfig")
     public Response getConfig() {
         return Response.ok(sampleConfig + "\n").build();
     }
@@ -45,7 +45,7 @@ public class SampleResource {
     @Path("/echo-xml")
     @Consumes(MediaType.TEXT_XML)
     @Produces(MediaType.TEXT_XML)
-    @Counted
+    @Counted("application.SampleResource.postEchoXml")
     public Response postEchoXml(EchoRequest request) {
         EchoResponse response = new EchoResponse();
         response.setOutput("Received " + request.getInput());
@@ -56,7 +56,7 @@ public class SampleResource {
     @Path("/echo-json")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Counted
+    @Counted("application.SampleResource.postEchoJson")
     public Response postEchoJson(EchoRequest request) {
         EchoResponse response = new EchoResponse();
         response.setOutput("Received " + request.getInput());
