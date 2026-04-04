@@ -47,9 +47,9 @@ All JAX-RS resources are mounted under `/app` (defined by `RestApplication` with
 
 ### Technology Stack
 
-- **Quarkus 3.34** with Java 25
+- **Quarkus 3.x (latest)** with Java 25
 - **JAX-RS** via `quarkus-rest` (not the legacy `quarkus-resteasy`)
-- **JSON** via `quarkus-rest-jackson`, **XML** via `quarkus-rest-jaxb`
+- **JSON** via `quarkus-rest-jsonb`, **XML** via `quarkus-rest-jaxb`
 - **Templating**: Qute (`quarkus-rest-qute`), templates in `src/main/resources/templates/*.qute.html`
 - **Database**: Hibernate ORM with PostgreSQL in production, H2 in-memory for tests
 - **Security**: Form-based auth (`quarkus-security-jpa`); `/app/pages/*` requires authentication
