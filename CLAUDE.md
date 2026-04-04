@@ -47,7 +47,7 @@ All JAX-RS resources are mounted under `/app` (defined by `RestApplication` with
 
 ### Technology Stack
 
-- **Quarkus 3.31** with Java 25
+- **Quarkus 3.34** with Java 25
 - **JAX-RS** via `quarkus-rest` (not the legacy `quarkus-resteasy`)
 - **JSON** via `quarkus-rest-jackson`, **XML** via `quarkus-rest-jaxb`
 - **Templating**: Qute (`quarkus-rest-qute`), templates in `src/main/resources/templates/*.qute.html`
